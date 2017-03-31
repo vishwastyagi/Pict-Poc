@@ -1,0 +1,46 @@
+<div style="margin-top:-16px;background-color:#525252;margin-right:-32px;margin-left:-32px;">
+
+    <ul style="padding:7px;">
+        <!--<ol>
+            <a href="http://10.29.94.70:61001/tag/" target="_blank" class="five">OBIM</a>
+        </ol>-->
+        <ol style="width:80%;text-align:right;font-size: 1rem;">
+            PICT API
+        </ol>
+    </ul>
+</div>
+<div>
+        <label *ngIf="httpErrorMessage" style="color:red;padding-left:30px;padding-top:20px;" id="httpErrorMessage">{{httpErrorMessage}}</label>
+</div>
+
+
+        <form #heroForm="ngForm">
+            <div id="wrapper">
+            <div class="float myprop">
+                <label for="name">Enter Rows</label>
+                <input type="text" required
+                   [(ngModel)]="rows" ngControl="rows" (keyup)="onKey()" class="textbox">
+               <!-- <br><br> <br><br>-->
+             </div>
+            <div class="float myprop">
+                <label for="name">Enter Columns</label>
+                <input type="text" required
+                    [(ngModel)]="cols" ngControl="cols" (keyup)="onKey()" class="textbox">
+            </div>
+            <div class="float myprop">
+                <button (click)="onClick()" class="buttonHolder">Submit</button>
+            </div>
+            <br>
+            </div>
+               <div *ngIf="drawTable>0" style="margin-top: 20px; margin-left:50px;">
+                   <h4>Enter Test Cases. First column is for header and rest is for Test Case Scenario</h4>
+                     <table border="0" *ngIf="rows>0 && cols>0"  >
+                        <tr *ngFor="#row of tables; #i=index">
+                          <td *ngFor="#col of row.col; #j=index"><input type="text" [(ngModel)]="data[i][j]"><td>
+                         </tr>
+                     </table>
+                     <br>
+                    <button (click)="onClick2()" class="buttonHolder"  *ngIf="drawTable>0">Submit test cases</button>
+                </div>
+        </form>
+
